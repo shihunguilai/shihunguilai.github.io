@@ -1,0 +1,145 @@
+---
+title: hexo+github pages + hexo-theme-yilia 搭建年轻人的第一个个人博客
+date: 2017-03-17 01:08:49
+tags:
+---
+
+
+一直想搭建gitbub博客系统，然而各种原因一直拖拉到今天。现在将我到操作记录下：
+
+### 用到到软件
+- nodejs
+- git
+- hexo-cli
+
+
+### 安装步骤：
+
+> 首先默认你已经装好了 git 、nodejs，会使用github，不然，自行百度
+
+#### 在github上创建一个名称为 {github用户名}.github.io 的仓库
+> 我的是  shihunguilai.github.io
+
+### 克隆仓库到本机
+```bash
+$ git clone git@github.com:shihunguilai/shihunguilai.github.io.git
+$ cd shihunguilai.github.io
+```
+
+### 创建 hexo 分支
+> hexo 分支放博客配置和markdown原文件 （写博客）
+master 分支存放hexo框架生成到html页面  （展示博客）
+
+```bash
+$ git branch hexo     #新建分支
+$ git push origin hexo:hexo   #将新建分支push到github上
+$ git branch --set-upstream-to=origin/hexo hexo #将本地到hexo分支和远程到河西分支关联，这样就可以在hexo分支上进行 pull和push操作了
+$ git checkout hexo  #切换到hexo操作
+
+```
+
+> 由于用hexo init 初始化博客时，会清空目录下所有的东西（包括 .git 目录），所以先创建一个临时目录，在这个临时目录下执行hexo init 操作，然后再剪切到项目跟目录下，执行其他操作
+
+```bash
+$ mkdir tmp    #创建临时目录
+$ cd tmp
+$ hexo init    #执行初始化
+$ cd ../
+$ mv tmp/* ./
+$ rm -rf tmp   # 删除临时目录
+$ npm install
+$ npm install hexo-deployer-git --save  # 安装hexo-git部署插件
+$ npm i hexo-generator-json-content --save
+
+```
+---
+### 使用好看的hexo主题，推荐 hexo-theme-yilia
+
+```bash
+$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
+```
+[详细使用说明](https://github.com/litten/hexo-theme-yilia)
+
+* 配置
+ - 修改项目根目录下的 _config.yml ： theme: yilia
+ - 增加配置 _config.yml
+ ```
+ jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+ ```
+
+---
+### 配置git部署
+修改 项目根目录下的 _config.yml
+deploy:
+  type: git
+  repo: git@github.com:shihunguilai/shihunguilai.github.io.git
+  branch: master
+
+
+### hexo 用法
+
+```bash
+$ hexo g #完整命令为hexo generate，用于生成静态文件
+$ hexo s #完整命令为hexo server，用于启动服务器，主要用来本地预览
+$ hexo d #完整命令为hexo deploy，用于将本地文件发布到github上
+$ hexo n #完整命令为hexo new，用于新建一篇文章
+
+```
+
+
+### 见证奇迹的时候到了
+
+```bash
+$ hexo g
+$ hexo s   #去浏览器 查看  http://localhost:4000
+$ hexo d   #去浏览器 查看  https://shihunguilai.github.io/
+
+```
+
+### 提交hexo分支代码到github上
+
+```bash
+$ git status
+$ git add .
+$ git commit -m 'first ci'
+$ git push
+
+```
+
+---
+
+
+
+### 发表一篇文章
+- `$ hexo new "my new post"`
+- 新建的文章源文件在 source/_posts/目录下
+- 新建页面如下
+
+```bash
+---
+title: my new post #可以改成中文的，如“新文章”
+date: 2015-04-08 22:56:29 #发表日期，一般不改动
+categories: blog #文章文类
+tags: [博客，文章] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
+---
+#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上
+<!--more-->#在<!--more-->之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。
+
+```
