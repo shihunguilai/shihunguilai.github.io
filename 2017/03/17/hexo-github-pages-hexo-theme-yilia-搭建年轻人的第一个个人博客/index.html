@@ -38,7 +38,7 @@ hexo-cli
 我的是  shihunguilai.github.io
 
 克隆仓库到本机12$ g">
-<meta property="og:updated_time" content="2017-03-16T17:13:52.000Z">
+<meta property="og:updated_time" content="2017-03-16T17:15:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github pages + hexo-theme-yilia 搭建年轻人的第一个个人博客">
 <meta name="twitter:description" content="一直想搭建gitbub博客系统，然而各种原因一直拖拉到今天。现在将我到操作记录下：
@@ -223,6 +223,7 @@ hexo-cli
 <blockquote>
 <p>由于用hexo init 初始化博客时，会清空目录下所有的东西（包括 .git 目录），所以先创建一个临时目录，在这个临时目录下执行hexo init 操作，然后再剪切到项目跟目录下，执行其他操作</p>
 </blockquote>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mkdir tmp    <span class="comment">#创建临时目录</span></div><div class="line">$ <span class="built_in">cd</span> tmp</div><div class="line">$ hexo init    <span class="comment">#执行初始化</span></div><div class="line">$ <span class="built_in">cd</span> ../</div><div class="line">$ mv tmp/* ./</div><div class="line">$ rm -rf tmp   <span class="comment"># 删除临时目录</span></div><div class="line">$ npm install</div><div class="line">$ npm install hexo-deployer-git --save  <span class="comment"># 安装hexo-git部署插件</span></div><div class="line">$ npm i hexo-generator-json-content --save</div></pre></td></tr></table></figure>
 <hr>
 <h3 id="使用好看的hexo主题，推荐-hexo-theme-yilia"><a href="#使用好看的hexo主题，推荐-hexo-theme-yilia" class="headerlink" title="使用好看的hexo主题，推荐 hexo-theme-yilia"></a>使用好看的hexo主题，推荐 hexo-theme-yilia</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>

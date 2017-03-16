@@ -185,31 +185,9 @@
 <blockquote>
 <p>由于用hexo init 初始化博客时，会清空目录下所有的东西（包括 .git 目录），所以先创建一个临时目录，在这个临时目录下执行hexo init 操作，然后再剪切到项目跟目录下，执行其他操作</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mkdir tmp    <span class="comment">#创建临时目录</span></div><div class="line">$ <span class="built_in">cd</span> tmp</div><div class="line">$ hexo init    <span class="comment">#执行初始化</span></div><div class="line">$ <span class="built_in">cd</span> ../</div><div class="line">$ mv tmp/* ./</div><div class="line">$ rm -rf tmp   <span class="comment"># 删除临时目录</span></div><div class="line">$ npm install</div><div class="line">$ npm install hexo-deployer-git --save  <span class="comment"># 安装hexo-git部署插件</span></div><div class="line">$ npm i hexo-generator-json-content --save</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="使用好看的hexo主题，推荐-hexo-theme-yilia"><a href="#使用好看的hexo主题，推荐-hexo-theme-yilia" class="headerlink" title="使用好看的hexo主题，推荐 hexo-theme-yilia"></a>使用好看的hexo主题，推荐 hexo-theme-yilia</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">详细使用说明</a></p>
-<ul>
-<li>配置<ul>
-<li>修改项目根目录下的 _config.yml ： theme: yilia</li>
-<li>增加配置 _config.yml<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">jsonContent:</div><div class="line">   meta: false</div><div class="line">   pages: false</div><div class="line">   posts:</div><div class="line">     title: true</div><div class="line">     date: true</div><div class="line">     path: true</div><div class="line">     text: true</div><div class="line">     raw: false</div><div class="line">     content: false</div><div class="line">     slug: false</div><div class="line">     updated: false</div><div class="line">     comments: false</div><div class="line">     link: false</div><div class="line">     permalink: false</div><div class="line">     excerpt: false</div><div class="line">     categories: false</div><div class="line">     tags: true</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="配置git部署"><a href="#配置git部署" class="headerlink" title="配置git部署"></a>配置git部署</h3><p>修改 项目根目录下的 _config.yml<br>deploy:<br>  type: git<br>  repo: git@github.com:shihunguilai/shihunguilai.github.io.git<br>  branch: master</p>
-<h3 id="hexo-用法"><a href="#hexo-用法" class="headerlink" title="hexo 用法"></a>hexo 用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo g <span class="comment">#完整命令为hexo generate，用于生成静态文件</span></div><div class="line">$ hexo s <span class="comment">#完整命令为hexo server，用于启动服务器，主要用来本地预览</span></div><div class="line">$ hexo d <span class="comment">#完整命令为hexo deploy，用于将本地文件发布到github上</span></div><div class="line">$ hexo n <span class="comment">#完整命令为hexo new，用于新建一篇文章</span></div></pre></td></tr></table></figure>
-<h3 id="见证奇迹的时候到了"><a href="#见证奇迹的时候到了" class="headerlink" title="见证奇迹的时候到了"></a>见证奇迹的时候到了</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo s   <span class="comment">#去浏览器 查看  http://localhost:4000</span></div><div class="line">$ hexo d   <span class="comment">#去浏览器 查看  https://shihunguilai.github.io/</span></div></pre></td></tr></table></figure>
-<h3 id="提交hexo分支代码到github上"><a href="#提交hexo分支代码到github上" class="headerlink" title="提交hexo分支代码到github上"></a>提交hexo分支代码到github上</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">$ git add .</div><div class="line">$ git commit -m <span class="string">'first ci'</span></div><div class="line">$ git push</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="发表一篇文章"><a href="#发表一篇文章" class="headerlink" title="发表一篇文章"></a>发表一篇文章</h3><ul>
-<li><code>$ hexo new &quot;my new post&quot;</code></li>
-<li>新建的文章源文件在 source/_posts/目录下</li>
-<li>新建页面如下</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: my new post <span class="comment">#可以改成中文的，如“新文章”</span></div><div class="line">date: 2015-04-08 22:56:29 <span class="comment">#发表日期，一般不改动</span></div><div class="line">categories: blog <span class="comment">#文章文类</span></div><div class="line">tags: [博客，文章] <span class="comment">#文章标签，多于一项时用这种格式，只有一项时使用tags: blog</span></div><div class="line">---</div><div class="line"><span class="comment">#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上</span></div><div class="line">&lt;!--more--&gt;<span class="comment">#在&lt;!--more--&gt;之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。</span></div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/03/17/hexo-github-pages-hexo-theme-yilia-搭建年轻人的第一个个人博客/#more">more >></a>
+        
       
 
       
