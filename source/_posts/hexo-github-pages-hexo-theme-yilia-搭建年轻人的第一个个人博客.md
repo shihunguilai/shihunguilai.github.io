@@ -40,6 +40,8 @@ $ git checkout hexo  #切换到hexo操作
 
 > 由于用hexo init 初始化博客时，会清空目录下所有的东西（包括 .git 目录），所以先创建一个临时目录，在这个临时目录下执行hexo init 操作，然后再剪切到项目跟目录下，执行其他操作
 
+<!--more-->
+
 ```bash
 $ mkdir tmp    #创建临时目录
 $ cd tmp
